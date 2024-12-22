@@ -76,3 +76,19 @@ vyos@vyos:~$ ip address show dev vpncloud0
     inet 10.0.0.100/24 scope global vpncloud0
        valid_lft forever preferred_lft forever
 ```
+
+# tap
+With device type `tap` we can use Ethernet L2 frames and for example can use ISIS protocol
+```
+# 10.0.0.100 (device type: tap)
+set protocols isis interface vpncloud0
+set protocols isis lsp-mtu '1410'
+set protocols isis net '49.0001.1000.1000.0100.00'
+set protocols isis redistribute ipv4 connected level-2
+
+# 10.0.0.10 (device type: tap)
+set protocols isis interface vpncloud0
+set protocols isis net '49.0001.1000.1000.0010.00'
+set protocol isis lsp-mtu 1410
+
+```
