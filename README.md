@@ -67,3 +67,12 @@ set container name vpncloud volume config destination '/etc/vpncloud/config.yaml
 set container name vpncloud volume config source '/config/containers/vpncloud/config.yaml'
 
 ```
+
+# check
+```
+vyos@vyos:~$ ip address show dev vpncloud0
+12: vpncloud0: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1427 qdisc fq_codel state UNKNOWN group default qlen 500
+    link/none
+    inet 10.0.0.100/24 scope global vpncloud0
+       valid_lft forever preferred_lft forever
+```
