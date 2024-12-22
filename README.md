@@ -6,7 +6,7 @@ Podman build:
 sudo podman build --net host --tag vyos-vpncloud:1.0 -f ./Dockerfile
 ```
 
-# Vyos intergration:
+# VyOS intergration:
 ```
 mkdir -p /config/containers/vpncloud
 

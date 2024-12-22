@@ -17,10 +17,9 @@ RUN wget -q "${VPNCLOUD_URL}/v${VPNCLOUD_VERSION}/vpncloud_${VPNCLOUD_VERSION}_a
     apt-get update && apt-get install -y /tmp/vpncloud.deb && \
     rm -f /tmp/vpncloud.deb
 
-EXPOSE 3210/udp
+RUN mkdir -p /etc/vpncloud/
 
-# Verify installation
-RUN vpncloud --version
+EXPOSE ${PORT}/udp
 
-# Set entrypoint or command as needed
-CMD ["vpncloud"]
+ENTRYPOINT ["vpncloud"]
+CMD ["--config", "/etc/vpncloud/config.yaml"]
