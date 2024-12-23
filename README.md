@@ -1,5 +1,5 @@
 # docker-vpncloud
-Docker vpncloud service
+Docker/podman vpncloud service with VyOS integration
 
 Podman build:
 ```
