@@ -3,6 +3,7 @@ Docker vpncloud service
 
 Podman build:
 ```
+wget https://raw.githubusercontent.com/sever-sever/docker-vpncloud/refs/heads/main/Dockerfile
 sudo podman build --net host --tag vyos-vpncloud:1.0 -f ./Dockerfile
 ```
 
