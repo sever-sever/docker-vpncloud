@@ -1,25 +1,23 @@
-FROM debian:bookworm-slim
+FROM alpine:3.21
 
 # Set environment variables
-ENV VPNCLOUD_VERSION="2.3.0"
 ENV VPNCLOUD_URL="https://github.com/dswd/vpncloud/releases/download"
+ENV VPNCLOUD_VERSION="2.3.0"
 ENV PORT="3210"
 
 # Install necessary tools and dependencies
-RUN apt-get update && apt-get install -y \
-    curl \
-    wget \
-    apt-transport-https \
-    && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache curl
+
+# Set the working dir
+WORKDIR /app
 
 # Download and install the VPNCloud package
-RUN wget -q "${VPNCLOUD_URL}/v${VPNCLOUD_VERSION}/vpncloud_${VPNCLOUD_VERSION}_amd64.deb" -O /tmp/vpncloud.deb && \
-    apt-get update && apt-get install -y /tmp/vpncloud.deb && \
-    rm -f /tmp/vpncloud.deb
+RUN curl -L -o vpncloud  "${VPNCLOUD_URL}/v${VPNCLOUD_VERSION}/vpncloud_${VPNCLOUD_VERSION}_static_amd64"
 
-RUN mkdir -p /etc/vpncloud/
+# Add executable flags
+RUN chmod +x vpncloud
 
 EXPOSE ${PORT}/udp
 
-ENTRYPOINT ["vpncloud"]
+ENTRYPOINT ["./vpncloud"]
 CMD ["--config", "/etc/vpncloud/config.yaml"]
