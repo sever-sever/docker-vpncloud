@@ -3,8 +3,8 @@ Docker/podman vpncloud service with VyOS integration
 
 Podman build:
 ```
-wget https://raw.githubusercontent.com/sever-sever/docker-vpncloud/refs/heads/main/Dockerfile
-sudo podman build --net host --tag vyos-vpncloud:1.0 -f ./Dockerfile
+wget https://raw.githubusercontent.com/sever-sever/docker-vpncloud/refs/heads/alpine/Dockerfile
+sudo podman build --net host --tag vyos-vpncloud/alpine:2.3.0 -f ./Dockerfile
 ```
 
 # VyOS intergration:
@@ -63,7 +63,7 @@ set container name vpncloud allow-host-networks
 set container name vpncloud capability 'net-admin'
 set container name vpncloud device tun destination '/dev/net/tun'
 set container name vpncloud device tun source '/dev/net/tun'
-set container name vpncloud image 'localhost/vyos-vpncloud:1.0'
+set container name vpncloud image 'localhost/vyos-vpncloud/alpine:2.3.0'
 set container name vpncloud volume config destination '/etc/vpncloud/config.yaml'
 set container name vpncloud volume config source '/config/containers/vpncloud/config.yaml'
 
