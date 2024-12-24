@@ -3,7 +3,7 @@ Docker/podman vpncloud service with VyOS integration
 
 Podman build:
 ```
-wget https://raw.githubusercontent.com/sever-sever/docker-vpncloud/refs/heads/alpine/Dockerfile
+wget https://raw.githubusercontent.com/sever-sever/docker-vpncloud/refs/heads/main/Dockerfile
 sudo podman build --net host --tag vyos-vpncloud/alpine:2.3.0 -f ./Dockerfile
 ```
 
