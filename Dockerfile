@@ -1,4 +1,4 @@
-FROM alpine:3.20.3
+FROM alpine:3.21
 
 # Set environment variables
 ENV VPNCLOUD_URL="https://github.com/dswd/vpncloud/releases/download"
