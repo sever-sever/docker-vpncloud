@@ -7,7 +7,12 @@ wget https://raw.githubusercontent.com/sever-sever/docker-vpncloud/refs/heads/al
 sudo podman build --net host --tag vyos-vpncloud/alpine:2.3.0 -f ./Dockerfile
 ```
 
-# VyOS intergration:
+Docker build (if you use docker instead of podman)
+```
+docker build -t vpncloud/alpine:2.3.0 .
+```
+
+# VyOS integration:
 ```
 mkdir -p /config/containers/vpncloud
 
@@ -79,7 +84,7 @@ vyos@vyos:~$ ip address show dev vpncloud0
 ```
 
 # tap
-With device type `tap` we can use Ethernet L2 frames and for example can use ISIS protocol
+With device type `tap` we can use Ethernet L2 frames and, for example can use ISIS protocol.
 ```
 # 10.0.0.100 (device type: tap)
 set protocols isis interface vpncloud0
