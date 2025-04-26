@@ -95,3 +95,23 @@ set protocols isis interface vpncloud0
 set protocols isis net '49.0001.1000.1000.0010.00'
 set protocol isis lsp-mtu 1410
 ```
+
+# hub-and-spoke
+```
+# hub
+set container name vpncloud allow-host-networks
+set container name vpncloud capability 'net-admin'
+set container name vpncloud command '--ip 10.23.23.1 --password SecReTpAss --device vpncloud0 --type tun'
+set container name vpncloud device tun destination '/dev/net/tun'
+set container name vpncloud device tun source '/dev/net/tun'
+set container name vpncloud image 'localhost/vyos-vpncloud:2.3.0'
+
+# spoke
+set container name vpncloud allow-host-networks
+set container name vpncloud capability 'net-admin'
+set container name vpncloud command '--ip 10.23.23.11 --password SecReTpAss --device vpncloud0 --type tun --peer 192.0.2.1'
+set container name vpncloud device tun destination '/dev/net/tun'
+set container name vpncloud device tun source '/dev/net/tun'
+set container name vpncloud image 'localhost/vyos-vpncloud:2.3.0'
+
+```
